@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: guess-game
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: maxmelodia/guess-frontend:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: REACT_APP_BACKEND_URL
+              # value: "http://backend:3000"
+              # value: "http://127.0.0.1:36475" //tenho que passar o localhost + porta do backend
+              value: "http://127.0.0.1:36211"
