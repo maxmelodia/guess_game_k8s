@@ -1,6 +1,7 @@
 #!/bin/bash
 
-set -e  # para encerrar se algum comando falhar
+# para encerrar se algum comando falhar
+set -e
 
 # Função de pausa interativa
 pause() {
@@ -23,30 +24,25 @@ loading() {
 # Cabeçalho
 echo "🌐 SCRIPT DE DEPLOY DO GUESS GAME COM HELM + MINIKUBE"
 echo "============================================="
-pause
 
 # Etapa 1: Uninstall Helm (caso exista)
 loading "🧹 Removendo instalação anterior com Helm"
 helm uninstall guess-game || echo "🔸 Nenhum release anterior encontrado."
-pause
 
 # Etapa 2: Limpando recursos residuais
 loading "🧹 Limpando recursos antigos (Ingress, Service, Deployments)"
 kubectl delete ingress guess-ingress --ignore-not-found
 kubectl delete svc backend frontend --ignore-not-found
 kubectl delete deploy backend frontend --ignore-not-found
-pause
 
 # Etapa 3: Instalando com Helm
 loading "🚀 Instalando aplicação com Helm"
 helm install guess-game k8s/guess-game-chart
-pause
 
 # Etapa 4: Verificando status
 loading "🔍 Verificando recursos criados"
 kubectl get all
 kubectl get ingress
-pause
 
 # Etapa 5: Lembrete do túnel
 echo ""
@@ -56,4 +52,4 @@ echo "🔗 Depois, acesse: http://guess.local"
 pause
 
 echo ""
-echo "🎉 Tudo pronto! Boa sorte com o jogo 😎"
+echo "🎉 Tudo pronto! 😎"
