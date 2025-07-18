@@ -214,7 +214,7 @@ Status code distribution:
 ```
 
 **🖼️ Imagem de exemplo (Teste de carga com Hey)**
-![Teste de carga com Hey](images/guess-local-browser.png)
+![Teste de carga com Hey](images/teste-carga.png)
 
 ---
 
