@@ -37,6 +37,7 @@ guess_game_k8s/
             ├── hpa-backend.yaml
             ├── ingress-backend.yaml
             └── ingress-frontend.yaml
+    ├── images     # imagens para documentação
     ├── deploy.sh  # Script auxiliar para executar a instalação passo a passo
     ├── README.md  # Documentação do projeto
 ```
